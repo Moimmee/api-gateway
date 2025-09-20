@@ -17,4 +17,4 @@ spring:
                 - Path=/api/gathering/**
 
 jwt:
-  secret: 'sfseubidgfhuae8uph9oibvdisu9e8ahoibeiueobwdvuodfegy8he3urtfiewbdsdsfdsfw4r345365789654321sdvdfdfdfs435345yhldfshv'
+  secret: ${JWT_SECRET}
