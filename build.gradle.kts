@@ -36,7 +36,7 @@ dependencies {
     implementation("org.springframework.boot:spring-boot-starter-actuator")
 
     // reactive redis
-    implementation("org.springframework.boot:spring-boot-starter-data-redis-reactive")
+//    implementation("org.springframework.boot:spring-boot-starter-data-redis-reactive")
 
     // security
     implementation("org.springframework.boot:spring-boot-starter-security")
@@ -50,6 +50,11 @@ dependencies {
 
     // monitoring
     runtimeOnly("io.micrometer:micrometer-registry-prometheus")
+
+    // jwt
+    implementation("io.jsonwebtoken:jjwt-api:0.12.6")
+    runtimeOnly("io.jsonwebtoken:jjwt-impl:0.12.6")
+    runtimeOnly("io.jsonwebtoken:jjwt-jackson:0.12.6")
 }
 
 dependencyManagement {

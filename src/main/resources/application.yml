@@ -1,0 +1,35 @@
+spring:
+  cloud:
+    gateway:
+      server:
+        webmvc:
+          routes:
+            - id: user-service
+              uri: http://localhost:8081
+              predicates:
+                - Path=/api/users/**
+              filters:
+                - StripPrefix=2
+
+server:
+  port: 8080
+
+---
+spring:
+  config:
+    activate:
+      on-profile: k8s
+  cloud:
+    gateway:
+      server:
+        webmvc:
+          routes:
+            - id: user-service
+              uri: http://localhost:8081
+              predicates:
+                - Path=/api/users/**
+              filters:
+                - StripPrefix=2
+
+jwt:
+  secret: ${JWT_SECRET}
