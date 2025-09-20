@@ -11,7 +11,7 @@ spring:
               filters:
                 - StripPrefix=0  # /api/v1/users/123 -> /api/v1/users/123
 
-            - id: product-service
+            - id: gathering-service
               uri: http://10.80.162.8:8080
               predicates:
                 - Path=/api/gathering/**
