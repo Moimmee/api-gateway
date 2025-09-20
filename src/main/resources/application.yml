@@ -1,0 +1,20 @@
+spring:
+  cloud:
+    gateway:
+      server:
+        webmvc:
+          routes:
+            - id: user-service
+              uri: http://10.80.163.1:8080
+              predicates:
+                - Path=/api/users/**
+              filters:
+                - StripPrefix=0  # /api/v1/users/123 -> /api/v1/users/123
+
+            - id: product-service
+              uri: http://10.80.162.8:8080
+              predicates:
+                - Path=/api/gathering/**
+
+jwt:
+  secret: 'sfseubidgfhuae8uph9oibvdisu9e8ahoibeiueobwdvuodfegy8he3urtfiewbdsdsfdsfw4r345365789654321sdvdfdfdfs435345yhldfshv'
