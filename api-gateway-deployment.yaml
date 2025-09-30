@@ -1,0 +1,28 @@
+apiVersion: apps/v1
+kind: Deployment
+
+metadata:
+  name: api-gateway-deployment
+
+spec:
+  selector:fs
+    matchLabels:
+      app: gathering-app # 해당 label을 가진 pod를 배포할 것이라고 명시
+  replicas: 2
+
+  template: # 배포할 pod에 대한 정보
+    metadata:
+      labels:
+        app: api-gateway-app
+    spec:
+      containers:
+        - name: api-gateway-container
+          image: osoohynn3/api-gateway-image
+          imagePullPolicy: IfNotPresent
+          ports:
+            - containerPort: 8080
+          envFrom:
+#            - configMapRef:
+#                name: gathering-config
+            - secretRef:
+                name: gathering-secret
