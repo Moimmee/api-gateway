@@ -5,31 +5,41 @@ spring:
         webmvc:
           routes:
             - id: user-service
-              uri: http://localhost:8081
+              uri: http://user-service:9091
               predicates:
                 - Path=/api/users/**
               filters:
                 - StripPrefix=2
 
-server:
-  port: 8080
-
----
-spring:
-  config:
-    activate:
-      on-profile: k8s
-  cloud:
-    gateway:
-      server:
-        webmvc:
-          routes:
-            - id: user-service
-              uri: http://localhost:8081
+            - id: gathering-service
+              uri: http://gathering-service:9092
               predicates:
-                - Path=/api/users/**
+                - Path=/parties/**
               filters:
-                - StripPrefix=2
+                - StripPrefix=0
+#
+#
+#jwt:
+#  secret: 'dfdfbddsfjhiu9u8feqw8yr8e3yhybquhou3buvgafbuyyfcybudhsuy78qewgdaugewr7ftgqyewf86qt3gyfeqfdf'
 
+
+#---
+#spring:
+#  config:
+#    activate:
+#      on-profile: k8s
+#  cloud:
+#    gateway:
+#      server:
+#        webmvc:
+#          routes:
+#            - id: user-service
+#              uri: http://localhost:8081
+#              predicates:
+#                - Path=/api/users/**
+#              filters:
+#                - StripPrefix=2
+#
+#
 jwt:
   secret: ${JWT_SECRET}
